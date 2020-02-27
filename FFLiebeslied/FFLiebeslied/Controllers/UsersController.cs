@@ -14,21 +14,6 @@ namespace FFLiebeslied.Controllers
     {
         private ModelContext db = new ModelContext();
 
-        // GET: Users/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            User user = db.Users.Find(id);
-            if (user == null)
-            {
-                return HttpNotFound();
-            }
-            return View(user);
-        }
-
         #region REGISTER
         // GET: Users/Register
         public ActionResult Register()
@@ -83,64 +68,53 @@ namespace FFLiebeslied.Controllers
 
         #endregion
 
-
-
-        // GET: Users/Edit/5
-        public ActionResult Edit(int? id)
+        #region LOGIN
+        // GET: Users/Login
+        public ActionResult Login()
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            User user = db.Users.Find(id);
-            if (user == null)
-            {
-                return HttpNotFound();
-            }
-            return View(user);
+            return View();
         }
 
-        // POST: Users/Edit/5
-        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
-        // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
+
+        //POST: Users/login
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "UserID,Username,Password")] User user)
+        public ActionResult Login([Bind(Include = "UserID,Username,Password")] User user)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(user).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                try
+                {
+                    var usuarioBD = db.Users.First(x => x.Username == user.Username);
+
+                    //Existe
+                    if(usuarioBD.Password.CompareTo(user.Password) == 0)
+                    {
+                        //La contraseña es correcta
+                        return RedirectToAction("Index", "Home");
+                    }
+                }
+
+                //No existe
+                catch
+                {
+                    return RedirectToAction("ErrorLogin");
+                }
             }
+
+            //Contraseña incorrecta
             return View(user);
         }
 
-        // GET: Users/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult ErrorLogin()
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            User user = db.Users.Find(id);
-            if (user == null)
-            {
-                return HttpNotFound();
-            }
-            return View(user);
+            //Mensaje de error a mostrar
+            ViewBag.mensaje = "El usuario especificado no existe";
+            return View();
         }
 
-        // POST: Users/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            User user = db.Users.Find(id);
-            db.Users.Remove(user);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
+        #endregion
+
 
         protected override void Dispose(bool disposing)
         {
