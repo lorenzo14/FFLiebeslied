@@ -17,7 +17,7 @@ namespace FFLiebeslied.Models
         public double Price { get; set; }
 
         //Relación con las canciones que contiene
-        public virtual List<Song> Songs { get; set; }
+        public List<Song> Songs { get; set; }
 
         public byte[] DiscImage { get; set; }
     }

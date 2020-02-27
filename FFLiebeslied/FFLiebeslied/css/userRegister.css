@@ -1,0 +1,74 @@
+﻿/*Estilos de la vista de registro*/
+body {
+    background-color: white;
+    color: black;
+    font-family: Arial;
+    background-image: url(../img/musicBackground.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-repeat: repeat-y;
+    text-align:center;
+}
+
+h2 {
+    color: white;
+}
+
+form {
+    background-color: darkred;
+    padding: 10px;
+    border-radius: 15px;
+    width:300px;
+    margin: auto;
+}
+
+.form-control{
+    background-color:lightgray;
+    text-align:center;
+    margin:auto;
+    width:500px;
+}
+
+span {
+    color: white;
+}
+
+.col-md-4{
+    margin: 0 auto;
+    height: 200px;
+    width: 400px;
+    float:none;
+}
+
+h2{
+    text-align:center
+}
+
+/*Estilos de los botones*/
+#btnCancelar {
+    background-color: red;
+    border-radius: 8px;
+    float:left;
+    width: 80px;
+    height:30px;
+}
+
+#btnCancelar:hover{
+    background-color: darkred;
+    color:white;
+}
+
+#btnAceptar {
+    background-color: limegreen;
+    border-radius: 8px;
+    float: right;
+    width: 80px;
+    height: 30px;
+}
+
+#btnAceptar:hover {
+    background-color: greenyellow;
+    color:black;
+}
+
+
