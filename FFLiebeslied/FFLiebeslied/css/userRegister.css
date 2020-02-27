@@ -48,7 +48,6 @@ h2{
 #btnCancelar {
     background-color: red;
     border-radius: 8px;
-    float:left;
     width: 80px;
     height:30px;
 }
@@ -61,7 +60,6 @@ h2{
 #btnAceptar {
     background-color: limegreen;
     border-radius: 8px;
-    float: right;
     width: 80px;
     height: 30px;
 }
@@ -69,6 +67,14 @@ h2{
 #btnAceptar:hover {
     background-color: greenyellow;
     color:black;
+}
+
+div > button{
+    margin:auto;
+}
+
+#login{
+    color:yellow;
 }
 
 

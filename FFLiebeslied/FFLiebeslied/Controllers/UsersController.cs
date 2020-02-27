@@ -14,12 +14,6 @@ namespace FFLiebeslied.Controllers
     {
         private ModelContext db = new ModelContext();
 
-        // GET: Users
-        public ActionResult Index()
-        {
-            return View(db.Users.ToList());
-        }
-
         // GET: Users/Details/5
         public ActionResult Details(int? id)
         {
@@ -35,6 +29,7 @@ namespace FFLiebeslied.Controllers
             return View(user);
         }
 
+        #region REGISTER
         // GET: Users/Register
         public ActionResult Register()
         {
@@ -50,16 +45,45 @@ namespace FFLiebeslied.Controllers
         {
             if (ModelState.IsValid)
             {
-                //Asginamos el ID y el disco del usuario
-                user.UserID = db.Users.Max(x => x.UserID);
-                user.Disc = new Disc();
-                db.Users.Add(user);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                try
+                {
+                    //Comprobamos si el usuario ya existe
+                    var usuarioBD = db.Users.First(x => x.Username == user.Username);
+
+                    //Existe
+                    return RedirectToAction("ErrorRegister");
+
+                }
+
+                //No existe
+                catch
+                {
+                    //Asginamos el disco al usuario
+                    user.Disc = new Disc();
+
+                    //Grabamos el usuario
+                    db.Users.Add(user);
+                    db.SaveChanges();
+                    return RedirectToAction("Index", "Home");
+                    
+                }
+                
+                
             }
 
             return View(user);
         }
+
+        public ActionResult ErrorRegister()
+        {
+            //Mensaje de error a mostrar
+            ViewBag.mensaje = "El nombre de usuario especificado ya está en uso";
+            return View();
+        }
+
+        #endregion
+
+
 
         // GET: Users/Edit/5
         public ActionResult Edit(int? id)
