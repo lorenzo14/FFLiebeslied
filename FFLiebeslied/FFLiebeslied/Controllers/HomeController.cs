@@ -37,6 +37,7 @@ namespace FFLiebeslied.Controllers
         {
             API.Api api = new API.Api();
             //Modelo de params ?q_track=buried alive&q_artist=avenged&apikey=9e7110145522bfa2bf3eb372b19e0ac9
+            //APIKEY PARAMETRO &apikey=9e7110145522bfa2bf3eb372b19e0ac9
             api.cargaCancion("?q_track=buried alive&q_artist=avenged&apikey=9e7110145522bfa2bf3eb372b19e0ac9");
             return View();
         }

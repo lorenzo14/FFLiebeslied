@@ -22,7 +22,6 @@ namespace FFLiebeslied.Models
 
         [Required(ErrorMessage = "Se requiere un precio para la canción")]
         public double Price { get; set; }
-        public int Year { get; set; }
         public string Lyrics { get; set; }
 
 

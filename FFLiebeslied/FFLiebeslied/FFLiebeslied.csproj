@@ -177,8 +177,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="API\Api.cs" />
-    <Compile Include="API\APIArtist\APIArtist.cs" />
-    <Compile Include="API\APISong\APISong.cs" />
+    <Compile Include="API\ApiModels.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
