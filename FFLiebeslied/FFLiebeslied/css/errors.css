@@ -1,0 +1,11 @@
+﻿/*Estilos de las vistas de errores*/
+body {
+    background-color: white;
+    color: black;
+    font-family: Arial;
+    background-image: url(../img/error.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-repeat: repeat-y;
+    text-align: center;
+}

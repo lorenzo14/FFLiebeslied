@@ -27,7 +27,7 @@ namespace FFLiebeslied.Models
 
 
         //Relación con el autor
-        public virtual Author Author { get; set; }
+        public virtual Artist Author { get; set; }
         
     }
 }
