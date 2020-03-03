@@ -14,6 +14,7 @@ namespace FFLiebeslied.API
     public class Api
     {
         static HttpClient cliente = new HttpClient();
+        string APIKEY = "&apikey=9e7110145522bfa2bf3eb372b19e0ac9";
 
         /*static async Task RunAsync()
         {
@@ -27,6 +28,7 @@ namespace FFLiebeslied.API
                 new MediaTypeWithQualityHeaderValue("application/json"));
         }*/
 
+        #region MetodosAPI
         //Método que realiza la petición para obtener una canción
         static async Task<ApiSong.RootObject> GetSong(string path)
         {
@@ -58,43 +60,54 @@ namespace FFLiebeslied.API
             string respuesta = await cliente.GetAsync(path).Result.Content.ReadAsStringAsync();
 
             //Deserializamos el JSON
-            ApiLyrics.RootObject artista = JsonSerializer.Deserialize<ApiLyrics.RootObject>(respuesta);
+            ApiLyrics.RootObject letra = JsonSerializer.Deserialize<ApiLyrics.RootObject>(respuesta);
 
-            return artista;
+            return letra;
         }
+        #endregion
 
+        #region MetodosNormales
         //Método que lee una canción
         public Song cargaCancion(string parametros)
         {
             //Llamamos al método encargado de realizar la petición
-            ApiSong.RootObject busquedaCancion = GetSong("https://api.musixmatch.com/ws/1.1/track.search" + parametros).Result;
+            ApiSong.RootObject busquedaCancion = GetSong("https://api.musixmatch.com/ws/1.1/track.search" + parametros + APIKEY).Result;
 
-            string letra = "";
-            if (busquedaCancion.message.body.track_list[0].track.has_lyrics == 1)
+            //Comprobamos que se haya encontrado alguna canción
+            if (busquedaCancion.message.body.track_list.Count > 0)
             {
-                //Buscamos la letra para esta cancion
-                letra = cargaLetra(busquedaCancion.message.body.track_list[0].track.track_id);
+                string letra = "";
+
+                if (busquedaCancion.message.body.track_list[0].track.has_lyrics == 1)
+                {
+                    //Buscamos la letra para esta cancion
+                    letra = cargaLetra(busquedaCancion.message.body.track_list[0].track.track_id);
+                }
+
+                //Creamos la canción con los datos buscados
+                Song cancion = new Song
+                {
+                    idSong = busquedaCancion.message.body.track_list[0].track.track_id,
+                    Title = busquedaCancion.message.body.track_list[0].track.track_name,
+                    Disc = busquedaCancion.message.body.track_list[0].track.album_name,
+                    Genre = busquedaCancion.message.body.track_list[0].track.primary_genres.music_genre_list[0].music_genre.music_genre_name,
+                    Lyrics = letra,
+                    Author = cargaArtista(busquedaCancion.message.body.track_list[0].track.artist_name),
+                    Price = 0
+                    //CALCULAR PRECIO
+                };
+
+                return cancion;
             }
 
-            Song cancion = new Song
-            {
-                idSong = busquedaCancion.message.body.track_list[0].track.track_id,
-                Title = busquedaCancion.message.body.track_list[0].track.track_name,
-                Disc = busquedaCancion.message.body.track_list[0].track.album_name,
-                Genre = busquedaCancion.message.body.track_list[0].track.primary_genres.music_genre_list[0].music_genre.music_genre_name,
-                Lyrics = letra,
-                Author = cargaArtista(busquedaCancion.message.body.track_list[0].track.artist_name),
-                Price = 0
-                //CALCULAR PRECIO
-            };
-
-            return cancion;
+            else return null;
+            
         }
 
         //Método que lee la letra de una canción
         public string cargaLetra(int idCancion)
         {
-            ApiLyrics.RootObject busquedaLetra = GetLyrics("https://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=" +  idCancion).Result;
+            ApiLyrics.RootObject busquedaLetra = GetLyrics("https://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=" + idCancion + APIKEY).Result;
             return busquedaLetra.message.body.lyrics.lyrics_body;
         }
 
@@ -102,7 +115,7 @@ namespace FFLiebeslied.API
         public Artist cargaArtista(string autor)
         {
             //Llamamos al método encargado de realizar la petición
-            ApiArtist.RootObject busquedaArtista = GetArtist("https://api.musixmatch.com/ws/1.1/artist.search?q_artist=" + autor).Result;
+            ApiArtist.RootObject busquedaArtista = GetArtist("https://api.musixmatch.com/ws/1.1/artist.search?q_artist=" + autor + APIKEY).Result;
 
             Artist artista = new Artist
             {
@@ -114,5 +127,6 @@ namespace FFLiebeslied.API
 
             return artista;
         }
+        #endregion
     }
 }

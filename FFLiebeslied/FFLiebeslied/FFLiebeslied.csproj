@@ -182,6 +182,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MainController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -245,6 +246,8 @@
     <Content Include="Views\Users\Login.cshtml" />
     <Content Include="Views\Users\ErrorLogin.cshtml" />
     <Content Include="Views\Home\pruebaCarga.cshtml" />
+    <Content Include="Views\Main\BusquedaCanciones.cshtml" />
+    <Content Include="Views\Main\CancionEncontrada.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
