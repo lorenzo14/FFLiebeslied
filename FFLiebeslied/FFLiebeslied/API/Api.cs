@@ -76,7 +76,7 @@ namespace FFLiebeslied.API
             //Comprobamos que se haya encontrado alguna canción
             if (busquedaCancion.message.body.track_list.Count > 0)
             {
-                string letra = "";
+                string letra = "", genero = "";
 
                 if (busquedaCancion.message.body.track_list[0].track.has_lyrics == 1)
                 {
@@ -84,16 +84,33 @@ namespace FFLiebeslied.API
                     letra = cargaLetra(busquedaCancion.message.body.track_list[0].track.track_id);
                 }
 
+                //Obtenemos el género
+                if(busquedaCancion.message.body.track_list[0].track.primary_genres.music_genre_list.Count > 0)
+                {
+                    genero = busquedaCancion.message.body.track_list[0].track.primary_genres.music_genre_list[0].music_genre.music_genre_name;
+                }
+
+                //Obtenemos el artista
+                Artist artista = cargaArtista(busquedaCancion.message.body.track_list[0].track.artist_name);
+
+
+                //Calculamos el precio de la cancion
+                double precio = ((double)busquedaCancion.message.body.track_list[0].track.track_rating * (double)artista.Rating) / 100;
+                if (precio < 0) precio = precio * -1;
+                precio = precio / 10.5;
+                precio = Math.Round(precio, 2);
+
+
                 //Creamos la canción con los datos buscados
                 Song cancion = new Song
                 {
                     idSong = busquedaCancion.message.body.track_list[0].track.track_id,
                     Title = busquedaCancion.message.body.track_list[0].track.track_name,
                     Disc = busquedaCancion.message.body.track_list[0].track.album_name,
-                    Genre = busquedaCancion.message.body.track_list[0].track.primary_genres.music_genre_list[0].music_genre.music_genre_name,
-                    Lyrics = letra,
-                    Author = cargaArtista(busquedaCancion.message.body.track_list[0].track.artist_name),
-                    Price = 0
+                    Genre = genero,
+                    Lyrics = letra.Replace("(1409619217113)", ""),
+                    Author = artista,
+                    Price = precio
                     //CALCULAR PRECIO
                 };
 

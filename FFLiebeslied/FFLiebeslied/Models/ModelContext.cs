@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Data.Entity;
+using System.Configuration;
 
 namespace FFLiebeslied.Models
 {
@@ -14,7 +15,7 @@ namespace FFLiebeslied.Models
         public virtual DbSet<Disc> Discs { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
 
-        public ModelContext() : base(@"Server=localhost\SQLEXPRESS01;Database=Liebeslied;Trusted_Connection=True;") 
+        public ModelContext() : base(ConfigurationManager.ConnectionStrings["Intermark"].ConnectionString)
         {
 
         }

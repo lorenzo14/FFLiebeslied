@@ -1,0 +1,40 @@
+﻿body {
+    font-family: "Arial";
+    background-image: url(../img/buscarCancion.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    color:white;
+}
+
+h2, h3{
+    text-align:center;
+    font-weight: bold;
+}
+
+#divCancion {
+    width: 50%;
+    display: inline-block;
+    margin: 0px 10px 0px 0px;
+}
+
+#divArtista {
+    display: inline-block;
+    vertical-align: top;
+}
+
+#pie{
+    text-align:center;
+}
+
+dd {
+    margin: 10px 0px 0px 0px;
+    border-bottom: solid black 1px;
+      background-color: rgba(0,0,0,.6);
+
+}
+
+dt {
+    background-color: black;
+    color: white;
+    padding: 5px;
+}
