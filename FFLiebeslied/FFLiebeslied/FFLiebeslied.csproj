@@ -181,7 +181,6 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MainController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
@@ -206,8 +205,10 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="css\about.css" />
     <Content Include="css\cancionEncontrada.css" />
     <Content Include="css\errors.css" />
+    <Content Include="css\indice.css" />
     <Content Include="css\userLogin.css" />
     <Content Include="css\userRegister.css" />
     <Content Include="favicon.ico" />
@@ -215,7 +216,10 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="img\buscarCancion.png" />
+    <Content Include="img\loren.jpeg" />
+    <Content Include="img\merendero.jpeg" />
     <Content Include="img\musicBackground.jpg" />
+    <Content Include="img\rosas.gif" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
@@ -240,16 +244,14 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Users\Register.cshtml" />
     <Content Include="Views\Users\ErrorRegister.cshtml" />
     <Content Include="Views\Users\Login.cshtml" />
     <Content Include="Views\Users\ErrorLogin.cshtml" />
-    <Content Include="Views\Home\pruebaCarga.cshtml" />
     <Content Include="Views\Main\BusquedaCanciones.cshtml" />
     <Content Include="Views\Main\CancionEncontrada.cshtml" />
+    <Content Include="Views\Main\Index.cshtml" />
+    <Content Include="Views\Main\About.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

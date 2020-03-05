@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<head>
+    <link rel="stylesheet" type="text/css" href="~/css/indice.css"/>
+</head>
+
+<body>
+    <div id="centro">
+        <h1>Liebeslied</h1>
+
+        <p id="fraseMusica">La música es amor buscando palabras - Lawrance Durrel</p>
+        <br />
+
+        <div id="divBoton">
+            @Html.ActionLink("Busque sus canciones", "BusquedaCanciones", new { id = "buscarCancion" })
+        </div>
+
+        <br />
+        <br />
+
+        <p>Guarde sus mejores recuerdos en el formato que desee</p>
+        <p>Desde los 60 a la actualidad</p>
+        <br />
+
+        <div id="formatos">
+            <p>Vinilos</p>
+            <p>Casetes</p>
+            <p>CD</p>
+            <p>Formato Digital</p>
+        </div>
+        <br />
+
+        @Html.ActionLink("Conozca nuestro servicio", "Servicios")
+        @Html.ActionLink("Sobre mí", "About")
+    </div>
+</body>
+

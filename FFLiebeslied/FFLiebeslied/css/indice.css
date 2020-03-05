@@ -1,0 +1,82 @@
+﻿body {
+    background-color:black;
+    background-image:url(../img/rosas.gif);
+    background-repeat:no-repeat;
+    background-size:cover;
+}
+
+h1 {
+    color: darkred;
+    font-size: 60px;
+    font-family: 'Bell MT'
+}
+
+#centro {
+    background-color: rgba(0,0,0, .6);
+    margin: auto;
+    width: 50%;
+    text-align: center;
+    height:500px;
+}
+
+#fraseMusica {
+    color: white;
+    font-family: 'Bell MT';
+    font-size: 16px;
+}
+
+#divBoton {
+    background-color: rgba(214, 39, 77, 0.2);
+    color:white;
+    width: 70%;
+    height: 35px;
+    margin: auto;
+    font-family: 'Bell MT';
+}
+
+#divBoton > a{
+    font-size:24px;
+    text-decoration:none;
+    color:white;
+}
+
+#divBoton:hover {
+    background-color: gainsboro;
+    color: black;
+}
+#divBoton:hover > a{
+    color:black;
+}
+
+p, li{
+    color:white;
+}
+
+#formatos {
+    width: 30%;
+    margin:auto;
+    background-color: rgba(214, 39, 77, 0.3);
+}
+
+#formatos > p:hover{
+    color:black;
+    background-color:white;
+}
+
+a{
+    color:red;
+    display:block;
+    text-decoration:underline;
+}
+
+a:hover{
+    color:white;
+}
+
+a:visited{
+    color:red;
+}
+
+a:visited:hover {
+    color: white;
+}

@@ -9,9 +9,24 @@ namespace FFLiebeslied.Controllers
 {
     public class MainController : Controller
     {
-
+        //Parametros de búsqueda para la API
         string TITLEPARAM = "?q_track=";
         string ARTISTPARAM = "&q_artist=";
+        bool logeado = false;
+
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+        public ActionResult About()
+        {
+            return View();
+        }
+
+        //Vistas de la API
+        #region VISTAS API
+
 
         // GET: BusquedaCanciones
         public ActionResult BusquedaCanciones()
@@ -48,6 +63,8 @@ namespace FFLiebeslied.Controllers
             }
             
         }
+        #endregion
+        
 
         //GET: GuardarCancion
         public ActionResult GuardarCancion()
