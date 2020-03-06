@@ -11,7 +11,7 @@ namespace FFLiebeslied.Models
     {
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Song> Songs { get; set; }
-        public virtual DbSet<Artist> Artists { get; set; }
+        public virtual DbSet<Author> Artists { get; set; }
         public virtual DbSet<Disc> Discs { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
 

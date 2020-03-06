@@ -91,7 +91,7 @@ namespace FFLiebeslied.API
                 }
 
                 //Obtenemos el artista
-                Artist artista = cargaArtista(busquedaCancion.message.body.track_list[0].track.artist_name);
+                Author artista = cargaArtista(busquedaCancion.message.body.track_list[0].track.artist_name);
 
 
                 //Calculamos el precio de la cancion
@@ -129,12 +129,12 @@ namespace FFLiebeslied.API
         }
 
         //Método que lee un artista
-        public Artist cargaArtista(string autor)
+        public Author cargaArtista(string autor)
         {
             //Llamamos al método encargado de realizar la petición
             ApiArtist.RootObject busquedaArtista = GetArtist("https://api.musixmatch.com/ws/1.1/artist.search?q_artist=" + autor + APIKEY).Result;
 
-            Artist artista = new Artist
+            Author artista = new Author
             {
                 idAuthor = busquedaArtista.message.body.artist_list[0].artist.artist_id,
                 Name = busquedaArtista.message.body.artist_list[0].artist.artist_name,

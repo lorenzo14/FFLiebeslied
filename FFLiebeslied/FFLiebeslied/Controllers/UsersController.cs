@@ -49,7 +49,7 @@ namespace FFLiebeslied.Controllers
                     //Grabamos el usuario
                     db.Users.Add(user);
                     db.SaveChanges();
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Login", "Users");
                     
                 }
                 
@@ -91,7 +91,7 @@ namespace FFLiebeslied.Controllers
                     if(usuarioBD.Password.CompareTo(user.Password) == 0)
                     {
                         //La contraseña es correcta
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("Index", "Main");
                     }
                 }
 

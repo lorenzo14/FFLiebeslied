@@ -191,7 +191,7 @@
       <DependentUpon>202002261632554_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\Artist.cs" />
+    <Compile Include="Models\Author.cs" />
     <Compile Include="Models\Disc.cs" />
     <Compile Include="Models\ErrorViewModel.cs" />
     <Compile Include="Models\ModelContext.cs" />
@@ -209,6 +209,9 @@
     <Content Include="css\cancionEncontrada.css" />
     <Content Include="css\errors.css" />
     <Content Include="css\indice.css" />
+    <Content Include="css\layout.css" />
+    <Content Include="css\midisco.css" />
+    <Content Include="css\servicios.css" />
     <Content Include="css\userLogin.css" />
     <Content Include="css\userRegister.css" />
     <Content Include="favicon.ico" />
@@ -244,17 +247,20 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Users\Register.cshtml" />
-    <Content Include="Views\Users\ErrorRegister.cshtml" />
-    <Content Include="Views\Users\Login.cshtml" />
-    <Content Include="Views\Users\ErrorLogin.cshtml" />
+    <Content Include="Views\Main\Register.cshtml" />
+    <Content Include="Views\Main\ErrorRegister.cshtml" />
+    <Content Include="Views\Main\Login.cshtml" />
+    <Content Include="Views\Main\ErrorLogin.cshtml" />
     <Content Include="Views\Main\BusquedaCanciones.cshtml" />
     <Content Include="Views\Main\CancionEncontrada.cshtml" />
     <Content Include="Views\Main\Index.cshtml" />
     <Content Include="Views\Main\About.cshtml" />
+    <Content Include="Views\Main\Servicios.cshtml" />
+    <Content Include="Views\Main\MiDisco.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Users\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

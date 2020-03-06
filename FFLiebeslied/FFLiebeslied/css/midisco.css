@@ -1,0 +1,31 @@
+﻿body {
+    height:100vh;
+
+}
+
+#cancion{
+    background-color: black;
+    color:white;
+    width: 20%;
+    margin:20px;
+    padding: 10px;
+    display:inline-block;
+    vertical-align:top;
+}
+
+button{
+    color:black;
+}
+
+#tituloCancion{
+    color:yellow;
+    font-size: 16px;
+}
+#datosCancion {
+    background-color: darkslategray;
+    padding: 5px;
+}
+
+#precio{
+    color:red;
+}

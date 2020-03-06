@@ -1,25 +1,40 @@
 ﻿body {
-    background-color: black;
     background-image: url(../img/merendero.jpeg);
-    background-size:auto;
+    background-size:cover;
+    background-repeat:no-repeat
     
 }
 
-#contenido {
+#contenidoYo, #contenidoApp {
+    display:inline-block;
     background-color: rgba(0,0,0, .6);
+}
+
+#contenidoYo {
     margin: auto;
     width: 40%;
     height: 500px;
     float:left;
-    color:white;
+    color: white;
 }
 
 img{
     height:200px;
     width:200px;
     float:left;
+    margin: 10px;
 }
 
-#contenido > p{
-    margin:5px;
+#contenidoYo > p {
+    margin: 5px;
+}
+h2{
+    margin:10px;
+}
+
+#contenidoApp {
+    width: 40%;
+    height: 500px;
+    color: white;
+    float:right;
 }

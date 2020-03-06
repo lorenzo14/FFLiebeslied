@@ -17,6 +17,6 @@ namespace FFLiebeslied.Models
         [Required(ErrorMessage = "Se requiere una contraseña")]
         public string Password { get; set; }
 
-        public Disc Disc { get; set; }
+        public virtual Disc Disc { get; set; }
     }
 }

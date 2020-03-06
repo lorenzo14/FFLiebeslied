@@ -18,7 +18,5 @@ namespace FFLiebeslied.Models
 
         //Relación con las canciones que contiene
         public List<Song> Songs { get; set; }
-
-        public byte[] DiscImage { get; set; }
     }
 }

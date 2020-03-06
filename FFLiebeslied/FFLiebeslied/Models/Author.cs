@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace FFLiebeslied.Models
 {
     //Clase de modelo Autor
-    public class Artist
+    public class Author
     {
         [Key]
         [Required(ErrorMessage = "Se requiere un id")]

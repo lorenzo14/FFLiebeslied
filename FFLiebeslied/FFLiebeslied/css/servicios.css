@@ -1,0 +1,23 @@
+﻿body {
+    background-color: black;
+    background-image: url(../img/rosas.gif);
+    background-repeat: no-repeat;
+    background-size: cover;
+    color:white;
+}
+
+.textoResaltado{
+    font-weight:bold;
+}
+
+#contenido{
+    background-color: rgba(0,0,0, 0.7);
+    margin:auto;
+    width:60%;
+    padding:10px;
+    margin-top: 20px;
+}
+
+h2{
+    text-align:center;
+}
