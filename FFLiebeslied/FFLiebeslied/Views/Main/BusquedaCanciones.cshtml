@@ -4,37 +4,37 @@
 }
 
 <head>
-
+    <link rel="stylesheet" type="text/css" href="~/css/busquedaCanciones.css" />
 </head>
 
 <body>
-    <div id="divTitulo">
-        <h1>Busca tu canción</h1>
-        <h3>Busca una canción utilizando la API de Musixmatch, y agrégala a tu disco</h3>
+    <div id="contenido">
+        <div id="divTitulo">
+            <h1>Busca tu canción</h1>
+            <h3>Busca una canción utilizando la API de Musixmatch y agrégala a tu disco</h3>
+        </div>
+
+        <div>
+            <form method="post">
+
+                <div id="titulo">
+                    <p>Título de la canción</p>
+                    @Html.Editor("titulo", new { htmlAttributes = new { @class = "form-control", placeholder = "Título" } })
+                    @if (ViewBag.mensajeTitulo != null)
+                    {
+                        @ViewBag.mensajeTitulo
+                    }
+                </div>
+
+                <div id="artista">
+                    <p>Artista</p>
+                    @Html.Editor("artista", new { htmlAttributes = new { @class = "form-control", placeholder = "Artista" } })
+                </div>
+
+
+                <button type="submit" id="btnOk">Buscar</button>
+            </form>
+        </div>
     </div>
-
-    <div>
-        <form method="post">
-            <table id="tablaBusqueda">
-                <tr>
-                    <td><label>Título de la canción</label></td>
-                    <td>@Html.Editor("titulo", new { htmlAttributes = new { @class = "form-control", placeholder = "Título" } })</td>
-                    <td>
-                        @if (ViewBag.mensajeTitulo != null)
-                        {
-                            @ViewBag.mensajeTitulo
-                        }
-                    </td>
-                </tr>
-
-                <tr>
-                    <td><label>Artista</label></td>
-                    <td>@Html.Editor("artista", new { htmlAttributes = new { @class = "form-control", placeholder = "Artista" } })</td>
-
-                </tr>
-            </table>            
-            
-            <button type="submit" id="btnOk">OK</button>
-        </form>
-    </div>
+    
 </body>

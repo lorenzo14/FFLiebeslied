@@ -81,11 +81,9 @@
             </dd>
 
         </dl>
-    </div>
-
-    <div id="pie">
-
-        @Html.ActionLink("Guardar", "GuardarCancion", "Main" ) |
-        @Html.ActionLink("Volver a buscar", "BusquedaCanciones", "Main")
+        <div id="botones">
+            <button>@Html.ActionLink("Guardar", "GuardarCancion")</button>
+            <button>@Html.ActionLink("Volver a buscar", "BusquedaCanciones")</button>
+        </div>
     </div>
 </div>

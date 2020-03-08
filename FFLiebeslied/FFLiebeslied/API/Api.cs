@@ -97,7 +97,7 @@ namespace FFLiebeslied.API
                 //Calculamos el precio de la cancion
                 double precio = ((double)busquedaCancion.message.body.track_list[0].track.track_rating * (double)artista.Rating) / 100;
                 if (precio < 0) precio = precio * -1;
-                precio = precio / 10.5;
+                precio = precio / 12;
                 precio = Math.Round(precio, 2);
 
 
@@ -108,7 +108,7 @@ namespace FFLiebeslied.API
                     Title = busquedaCancion.message.body.track_list[0].track.track_name,
                     Disc = busquedaCancion.message.body.track_list[0].track.album_name,
                     Genre = genero,
-                    Lyrics = letra.Replace("(1409619217113)", ""),
+                    Lyrics = letra.Replace("(1409619217113)", "").Replace("******* This Lyrics is NOT for Commercial use *******", ""),
                     Author = artista,
                     Price = precio
                     //CALCULAR PRECIO

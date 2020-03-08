@@ -4,48 +4,52 @@
     ViewBag.Title = "Register";
 }
 
-    <head>
-        <link type="text/css" rel="stylesheet" href="~/css/userRegister.css" />
-    </head>
+<head>
+    <link type="text/css" rel="stylesheet" href="~/css/userRegister.css" />
+</head>
 
-    <h2>Regístrese para usar nuestro servicio</h2>
-</hr>
+<body>
+    <div id="contenido">
+        <h2>Regístrese para usar nuestro servicio</h2>
+        </hr>
 
 
-@using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
 
-        <!--Username-->
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control", placeholder="Usuario" } })
-                @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+            <div class="form-horizontal">
+
+                <!--Username-->
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control", placeholder = "Usuario" } })
+                        @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <!--Password-->
+                <div class="form-group">
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", placeholder = "Contraseña", type = "password" } })
+                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <!--Botones-->
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <button type="reset" id="btnCancelar">Limpiar</button>
+                        <button type="submit" id="btnAceptar" class="btn btn-primary">Aceptar</button>
+                    </div>
+                </div>
             </div>
-        </div>
 
-        <!--Password-->
-        <div class="form-group">
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", placeholder="Contraseña", type="password"  } })
-                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <!--Botones-->
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <button type="reset" id="btnCancelar">Limpiar</button>
-                <button type="submit" id="btnAceptar" class="btn btn-primary">Aceptar</button>
-            </div>
-        </div>
+            @Html.ActionLink("¿Ya está registrado? Entre", "Login", "Main", new { id = "login" });
+        }
     </div>
-
-    @Html.ActionLink("¿Ya está registrado? Entre", "Login", "Main", new { id = "login" });
-}
+</body>
 
 
 @section Scripts {

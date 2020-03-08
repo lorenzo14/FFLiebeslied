@@ -1,0 +1,12 @@
+﻿body {
+    background-color:black;
+
+}
+
+#contenido {
+    background-color: darkred;
+    padding: 10px;
+    border-radius: 15px;
+    margin-top: 30px;
+    color:white;
+}

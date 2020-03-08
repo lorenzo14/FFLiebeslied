@@ -1,18 +1,29 @@
 ﻿body {
     font-family: "Arial";
-    background-image: url(../img/buscarCancion.png);
+    background-image: url(../img/rosas.gif);
     background-repeat: no-repeat;
     background-size: cover;
     color:white;
 }
 
-h2, h3{
-    text-align:center;
+#contenedor {
+    background-color: rgba(0,0,0,.6);
+    margin:10px;
+    padding: 10px;
+}
+h2 {
+    text-align: center;
     font-weight: bold;
 }
 
+h3 {
+    text-align: center;
+    font-weight: bold;
+    color: red;
+}
+
 #divCancion {
-    width: 50%;
+    width: 60%;
     display: inline-block;
     margin: 0px 10px 0px 0px;
 }
@@ -22,19 +33,44 @@ h2, h3{
     vertical-align: top;
 }
 
-#pie{
-    text-align:center;
-}
-
 dd {
     margin: 10px 0px 0px 0px;
     border-bottom: solid black 1px;
-      background-color: rgba(0,0,0,.6);
+    background-color: rgba(0,0,0,.6);
 
 }
 
 dt {
     background-color: black;
-    color: white;
+    color: red;
     padding: 5px;
+}
+
+dl {
+    background-color: rgba(0,0,0,.6);
+    color: white;
+    padding: 10px;
+    text-align: center;
+    border: solid 1px white;
+}
+
+a{
+    color:black;
+    text-decoration:none;
+}
+
+a:visited{
+    color:black;
+}
+
+a:hover{
+    color:black;
+}
+
+a:active{
+    color:black
+}
+
+#botones {
+    text-align: center;
 }

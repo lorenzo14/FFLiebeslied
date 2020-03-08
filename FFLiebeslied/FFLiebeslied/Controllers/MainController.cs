@@ -16,10 +16,11 @@ namespace FFLiebeslied.Controllers
         //Variables para controlar los login
         static bool logged;
         static User User;
-        static Disc Disc;
 
+        //Acceso a la base de datos
         private ModelContext db = new ModelContext();
 
+        #region VISTAS SIMPLES
         public ActionResult Index()
         {
             if(User != null) ViewBag.nombre = User.Username;
@@ -38,14 +39,15 @@ namespace FFLiebeslied.Controllers
             return View();
         }
 
-        
+        #endregion
+
         //Vistas de la API
         #region VISTAS API
-
 
         // GET: BusquedaCanciones
         public ActionResult BusquedaCanciones()
         {
+
             if (logged)
             {
                 ViewBag.nombre = User.Username;
@@ -85,18 +87,22 @@ namespace FFLiebeslied.Controllers
             }
             
         }
-        #endregion
 
         //GET: GuardarCancion
         public ActionResult GuardarCancion()
         {
             //Recibimos los datos de la cancion
-            Song cancion = (Song) TempData["cancion"];
+            Song cancion = (Song)TempData["cancion"];
             User.Disc.Songs.Add(cancion);
-            return RedirectToAction("Index");
+            User.Disc.Price += cancion.Price;
+            ViewBag.nombre = User.Username;
+            return RedirectToAction("BusquedaCanciones");
         }
 
-        // GET: BusquedaCanciones
+        #endregion
+
+
+        // GET: MiDisco
         public ActionResult MiDisco()
         {
             ViewBag.nombre = User.Username;
@@ -112,6 +118,45 @@ namespace FFLiebeslied.Controllers
             User.Disc.Songs.RemoveAt(posCancion);
 
             return RedirectToAction("MiDisco");
+        }
+
+        //GET: Comprar
+        public ActionResult Comprar()
+        {
+            ViewBag.nombre = User.Username;
+            ViewBag.formatos = new List<string>() { "Vinilo", "Casete", "CD" };
+            ViewBag.Precio = User.Disc.Price;
+            return View();
+        }
+
+        //POST: Comprar
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public ActionResult Comprar([Bind(Include = "Adress,CP,City,Province,Country,Formato")] Order order)
+        {
+            if (ModelState.IsValid)
+            {
+                order.Disc = User.Disc;
+                order.User = User;
+                order.OrderDate = System.DateTime.Now;
+
+                //Guardamos en la BD los datos del pedido, las canciones pedidas y los aristas de dichas canciones
+                db.Orders.Add(order);
+
+                foreach(Song cancion in User.Disc.Songs)
+                {
+                    db.Songs.Add(cancion);
+                    db.Artists.Add(cancion.Author);
+                }
+
+                db.SaveChanges();
+
+                ViewBag.nombre = User.Username;
+                return View("Agradecimiento");
+            }
+
+            ViewBag.mensaje = "Debe rellenar todos los campos de envío";
+            return View("Error");
         }
 
         #region Cuentas
@@ -137,7 +182,8 @@ namespace FFLiebeslied.Controllers
                     var usuarioBD = db.Users.First(x => x.Username == user.Username);
 
                     //Existe
-                    return RedirectToAction("ErrorRegister");
+                    ViewBag.mensaje = "El usuario ya existe";
+                    return View("Error");
 
                 }
 
@@ -217,7 +263,7 @@ namespace FFLiebeslied.Controllers
         {
             //Mensaje de error a mostrar
             ViewBag.mensaje = "El usuario especificado no existe";
-            return View();
+            return View("Error");
         }
 
         #endregion

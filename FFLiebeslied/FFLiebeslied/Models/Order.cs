@@ -15,6 +15,7 @@ namespace FFLiebeslied.Models
         public string City { get; set; }
         public string Province { get; set; }
         public string Country { get; set; }
+        public string Formato { get; set; }
 
         public virtual Disc Disc { get; set; }
         public virtual User User { get; set; }

@@ -11,41 +11,44 @@
 </head>
 
 <body>
-
-    <h1>Tus canciones</h1>
-
-    @if (ViewBag.canciones != null)
-    {
-        foreach (Song cancion in ViewBag.canciones)
+    <div id="contenido">
+        <h1>Tus canciones</h1>
+        @if (ViewBag.canciones != null)
         {
-    <div id="cancion">
-        <form method="post">
-            <p id="tituloCancion">@cancion.Title</p>
-            <ul id="datosCancion">
-                <li>Artista: @cancion.Author.Name</li>
-                <li>Género: @cancion.Genre</li>
-                <li id="precio">Precio: @cancion.Price €</li>
-                @Html.Hidden("posCancion", contador, new { htmlAttributes = new { @class = "form-control" } })
-
-                @{
-                    contador++;
-                    precioTotal += cancion.Price;
-                }
-
-            </ul>
-            <button type="submit" value="Eliminar">Eliminar</button>
-        </form>
-    </div>
+            foreach (Song cancion in ViewBag.canciones)
+            {
+                <div id="cancion">
+                    <form method="post">
+                        <p id="tituloCancion">@cancion.Title</p>
+                        <ul id="datosCancion">
+                            <li>Artista: @cancion.Author.Name</li>
+                            <li>Género: @cancion.Genre</li>
+                            <li id="precio">Precio: @cancion.Price €</li>
+                            @Html.Hidden("posCancion", contador, new { htmlAttributes = new { @class = "form-control" } })
+         
+                            @{
+                                contador++;
+                                precioTotal += cancion.Price;
+                            }
+         
+                        </ul>
+                        <button id="btnEliminar" type="submit" value="Eliminar"><img title="Eliminar canción" src="~/img/borrar.png" /></button>
+                    </form>
+                </div>
+            }
+         
         }
-    }
 
-    else { 
-    <h2>No hay canciones</h2>
-    }
+        else
+        {
+            <h2>No hay canciones</h2>
+        }
 
-    <div>
-        <h3>Precio total: @precioTotal€</h3>
-        <button>@Html.ActionLink("Comprar" ,"Index")</button>
+
+        <div>
+            <h3>Precio total: @precioTotal€</h3>
+            <button>@Html.ActionLink("Comprar", "Comprar")</button>
+        </div>
     </div>
 
 </body>

@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
+    <title>Liebeslied: Música a tu manera</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <link rel="icon" href="~/img/rosas.gif" />
@@ -21,25 +21,26 @@
                 </button>
                 <p class="navbar-brand">Liebeslied</p>
 
+                <!--Barra de navegación-->
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Inicio", "Index", "Main")</li>
                     <li>@Html.ActionLink("Servicios", "Servicios", "Main")</li>
                     <li>@Html.ActionLink("Acerca de", "About", "Main")</li>
-                    @if (ViewBag.nombre != null)
-                    {
-                        <li>@Html.ActionLink("Buscar canción", "BusquedaCanciones", "Main")</li>
-                    }
                 </ul>
 
             </div>
             <div class="navbar-collapse collapse">
+
+                <!--Parte derecha de la barra de navegación-->
                 <ul class="navbar-right ">
 
                     @if (ViewBag.nombre != null)
                     {
+
                         <li id="saludoCuenta">Hola, @ViewBag.nombre</li>
-                        <li>@Html.ActionLink("Mi Disco", "MiDisco", "Main")</li>
-                        <li>@Html.ActionLink("Cerrar Sesión", "CierreSesion", "Main")</li>
+                        <li><a href="~/Main/BusquedaCanciones"><img title="Buscar Canción" class="navImage" src="~/img/songSearch.png" /></a></li>
+                        <li><a href="~/Main/MiDisco"><img title="Mi Disco" class="navImage" src="~/img/vinilo.png" /></a></li>
+                        <li><a href="~/Main/CierreSesion"><img title="Salir" class="navImage" src="~/img/salir.png" /></a></li>
                     }
 
                     else
