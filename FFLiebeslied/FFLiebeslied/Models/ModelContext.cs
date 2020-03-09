@@ -18,7 +18,7 @@ namespace FFLiebeslied.Models
         // Connection Strings
         // Casa
         // Intermark
-        public ModelContext() : base(ConfigurationManager.ConnectionStrings["Intermark"].ConnectionString)
+        public ModelContext() : base(ConfigurationManager.ConnectionStrings["Casa"].ConnectionString)
         {
 
         }

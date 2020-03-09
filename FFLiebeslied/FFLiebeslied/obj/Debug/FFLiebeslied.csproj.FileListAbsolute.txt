@@ -122,7 +122,6 @@ C:\Users\lgomez\Documents\GitHub\FFLiebeslied\FFLiebeslied\FFLiebeslied\bin\Syst
 C:\Users\lgomez\Documents\GitHub\FFLiebeslied\FFLiebeslied\FFLiebeslied\bin\System.Text.Json.xml
 C:\Users\lgomez\Documents\GitHub\FFLiebeslied\FFLiebeslied\FFLiebeslied\bin\System.Threading.Tasks.Extensions.xml
 C:\Users\lgomez\Documents\GitHub\FFLiebeslied\FFLiebeslied\FFLiebeslied\bin\System.ValueTuple.xml
-C:\Users\ichor\Documents\GitHub\FFLiebeslied\FFLiebeslied\FFLiebeslied\obj\Debug\FFLiebeslied.csprojAssemblyReference.cache
 C:\Users\ichor\Documents\GitHub\FFLiebeslied\FFLiebeslied\FFLiebeslied\obj\Debug\FFLiebeslied.Migrations.Initial.resources
 C:\Users\ichor\Documents\GitHub\FFLiebeslied\FFLiebeslied\FFLiebeslied\obj\Debug\FFLiebeslied.csproj.GenerateResource.cache
 C:\Users\ichor\Documents\GitHub\FFLiebeslied\FFLiebeslied\FFLiebeslied\obj\Debug\FFLiebeslied.dll
