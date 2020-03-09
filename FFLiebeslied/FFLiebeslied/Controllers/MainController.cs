@@ -77,7 +77,11 @@ namespace FFLiebeslied.Controllers
                     ViewBag.nombre = User.Username;
                     return View("cancionEncontrada", cancion);
                 }
-                else return View("noEncontrado");
+                else
+                {
+                    ViewBag.mensaje = "No se ha encontrado la canción en la base de datos de la API";
+                    return View("Error");
+                }
             }
 
             else
@@ -102,6 +106,8 @@ namespace FFLiebeslied.Controllers
         #endregion
 
 
+        #region VISTAS DISCO y COMPRAR
+
         // GET: MiDisco
         public ActionResult MiDisco()
         {
@@ -123,10 +129,16 @@ namespace FFLiebeslied.Controllers
         //GET: Comprar
         public ActionResult Comprar()
         {
-            ViewBag.nombre = User.Username;
-            ViewBag.formatos = new List<string>() { "Vinilo", "Casete", "CD" };
-            ViewBag.Precio = User.Disc.Price;
-            return View();
+            if (User.Disc.Songs != null && User.Disc.Songs.Count != 0)
+            {
+                ViewBag.nombre = User.Username;
+                ViewBag.formatos = new List<string>() { "Vinilo", "Casete", "CD" };
+                ViewBag.Precio = User.Disc.Price;
+                return View();
+            }
+
+            ViewBag.mensaje = "No tienes canciones en el disco";
+            return View("Error");
         }
 
         //POST: Comprar
@@ -137,7 +149,9 @@ namespace FFLiebeslied.Controllers
             if (ModelState.IsValid)
             {
                 order.Disc = User.Disc;
-                order.User = User;
+
+                //Cargamos de nuevo el usuario para evitar excepción de Change Traking
+                order.User = db.Users.First(x => x.Username == User.Username);
                 order.OrderDate = System.DateTime.Now;
 
                 //Guardamos en la BD los datos del pedido, las canciones pedidas y los aristas de dichas canciones
@@ -149,15 +163,23 @@ namespace FFLiebeslied.Controllers
                     db.Artists.Add(cancion.Author);
                 }
 
+                //Guardamos los cambios de la BD
                 db.SaveChanges();
 
                 ViewBag.nombre = User.Username;
+
+                //Limpiamos el disco del usuario
+                User.Disc = new Disc();
+                User.Disc.Songs = new List<Song>();
+
                 return View("Agradecimiento");
             }
 
             ViewBag.mensaje = "Debe rellenar todos los campos de envío";
             return View("Error");
         }
+
+        #endregion
 
         #region Cuentas
         #region REGISTER
@@ -222,7 +244,6 @@ namespace FFLiebeslied.Controllers
             return View();
         }
 
-
         //POST: Users/login
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -239,10 +260,8 @@ namespace FFLiebeslied.Controllers
                     {
                         //La contraseña es correcta
                         logged = true;
-                        User = user;
-                        Disc disc = new Disc();
-                        disc.Songs = new List<Song>();
-                        user.Disc = disc;
+                        User = usuarioBD;
+                        User.Disc.Songs = new List<Song>();
 
                         return RedirectToAction("Index", "Main");
                     }

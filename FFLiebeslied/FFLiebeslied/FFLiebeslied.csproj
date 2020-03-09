@@ -205,6 +205,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="css\about.css" />
+    <Content Include="css\agradecimiento.css" />
     <Content Include="css\busquedaCanciones.css" />
     <Content Include="css\cancionEncontrada.css" />
     <Content Include="css\comprar.css" />

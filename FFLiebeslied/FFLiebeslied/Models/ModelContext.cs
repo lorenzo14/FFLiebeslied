@@ -15,7 +15,10 @@ namespace FFLiebeslied.Models
         public virtual DbSet<Disc> Discs { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
 
-        public ModelContext() : base(ConfigurationManager.ConnectionStrings["Casa"].ConnectionString)
+        // Connection Strings
+        // Casa
+        // Intermark
+        public ModelContext() : base(ConfigurationManager.ConnectionStrings["Intermark"].ConnectionString)
         {
 
         }
